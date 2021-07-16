@@ -1,0 +1,48 @@
+version: '3.7'
+
+services:
+
+  mongo-report-db:
+    image: mongo:4.4
+    logging:
+      driver: none
+    container_name: report-db
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: root
+    expose:
+      - 27017
+    ports:
+      - 27018:27017
+
+  redis:
+    image: redis
+    container_name: report-redis
+    environment:
+      - ALLOW_EMPTY_PASSWORD=yes
+    ports:
+      - 6378:6379
+
+  redis-commander:
+    container_name: report-redis-commander
+    image: rediscommander/redis-commander
+    restart: always
+    environment:
+      - REDIS_HOSTS=local:redis:6379
+    ports:
+      - "8081:8081"
+  
+  report-manager:
+    container_name: report-manager
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: base
+    ports:
+      - ${PORT}:${PORT}  
+    volumes:
+      - ./:/home/node/app/
+    depends_on:
+      - redis
+    command: npm run dev
+

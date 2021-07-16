@@ -1,0 +1,13 @@
+.env
+build
+logs
+.git
+.gitignore
+.dockerignore
+.env
+.vscode
+node_modules
+vendor
+.DS_Store
+README.md
+Makefile

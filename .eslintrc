@@ -1,0 +1,22 @@
+{
+  "extends": "airbnb-base",
+  "parserOptions": {
+    "ecmaVersion": 2018,
+    "sourceType": "module"
+  },
+  "rules": {
+    "no-unused-vars": "warn",
+    "no-console": "off",
+    "arrow-body-style": "off",
+    "indent": "warn",
+    "consistent-return": "off",
+    "no-else-return": "off",
+    "global-require": "off",
+    "new-cap": "off",
+    "arrow-parens": "off",
+    "no-param-reassign": ["error", { "props": false }]
+  },
+  "env": {
+    "jest": true
+  }
+}

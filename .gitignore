@@ -1,0 +1,7 @@
+.env
+node_modules/
+build/
+logs/
+newrelic_agent.log
+requests.http
+.DS_Store

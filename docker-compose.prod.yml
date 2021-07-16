@@ -1,0 +1,7 @@
+version: '3.7'
+
+services:
+  report-manager:
+    build:
+      target: production
+    command: node build/app.js  
